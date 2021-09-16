@@ -45,3 +45,11 @@ body {
 .transition {
    transition: var(--smooth);
 }
+
+br {
+   line-height: 0.6rem;
+}
+
+a {
+   color: white;
+}

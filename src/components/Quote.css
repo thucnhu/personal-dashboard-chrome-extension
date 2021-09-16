@@ -1,4 +1,24 @@
 .quote-area {
    text-align: center;
    height: fit-content;
+   position: relative;
+   top: 0;
+   transition: top ease 500ms;
+}
+
+.quote-area:hover {
+   top: -8px;
+   transition: all ease 500ms;
+}
+
+.author {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin-left: auto;   
+   margin-right: auto;
+}
+
+.author p {
+   padding-right: 1em;
 }

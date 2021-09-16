@@ -23,7 +23,12 @@ export default function Quote() {
             <div>
                <p>{quote}</p>
                <br />
-               <p className="small-txt">{author}</p>
+               <div className="author">
+                  <p className="small-txt">{author}</p>
+                  <a href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote} - ${author}`)}>
+                     <i class="bi bi-twitter" />
+                  </a>
+               </div>
             </div> :
             <p>{quote}</p>
          }
