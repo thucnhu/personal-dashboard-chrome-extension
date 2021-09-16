@@ -3,9 +3,45 @@
 * {
    margin: 0;
    box-sizing: border-box;
+   font-family: "Montserrat", sans-serif;
 }
 
 html {
-   font-family: "Montserrat", sans-serif;
-   font-size: 16px;
+   font-size: 17px;
+   --transparent: rgb(256, 256, 256, 0.8);
+   --smooth: all ease 250ms;
+   --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   --text-shadow: 0px 0px 20px #242424;
+}
+
+body {
+   color: white;
+   text-shadow: var(--text-shadow);
+}
+
+.black-text {
+   color: black;
+}
+
+/* h1, h2, h3, p {
+   padding: 0.3em 0;
+} */
+
+.center {
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.small-txt {
+   font-size: 0.8rem;
+}
+
+.pop-up {
+   position: fixed;
+   width: 100%;
+   height: 100%;
+}
+
+.transition {
+   transition: var(--smooth);
 }
