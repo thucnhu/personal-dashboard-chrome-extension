@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import "./styling/MainFocus.css"
+import useHover from "../hooks/useHover"
+import useClick from "../hooks/useClick"
 
 export default function MainFocus() {
    const [mainFocus, setMainFocus] = useState("")
    const [focused, setFocused] = useState(false)
-   const [done, setDone] = useState(false)
+   const [checked, setChecked] = useState(false)
+
+   const [hovered, hoverRef] = useHover()
+   const [open, clickRef] = useClick()
 
    function handleSubmit(event) {
       event.preventDefault()
@@ -27,36 +32,59 @@ export default function MainFocus() {
    })
 
    return (
-      <div className="main-focus-area">
-         {
-            focused ?
-            <div className="focused">
-               <h3>TODAY</h3>
-               <br />
-               <div className="focused-todo">
-                  <input 
-                     type="checkbox" 
-                     name="check-focus" 
-                     id="check-focus" 
-                     onChange={() => setDone(!done)}
-                  />
-                  <p className="medium-txt">{mainFocus}</p>
-                  <i className="bi bi-three-dots" />
-               </div>
-            </div> :
-            <div className="main-focus-form">
-               <p className="medium-txt">What's your main focus for today?</p>
-               <br />
-               <form onSubmit={handleSubmit}>
-                  <input 
-                     className="medium-txt"
-                     type="text" 
-                     value={mainFocus} 
-                     onChange={event => setMainFocus(event.target.value)}
-                  />
-               </form>
+      <div className="main-focus-area" ref={hoverRef}>
+         { focused ?
+         <div className="focused">
+            <h3>TODAY</h3>
+            <br />
+            <div className="focused-todo">
+               { hovered &&
+               <i 
+                  className={
+                     checked ? 
+                     "far fa-check-square fa-lg" : 
+                     "light-txt far fa-square fa-lg"
+                  }
+                  onClick={() => setChecked(!checked)}
+               /> }
+               <p 
+                  className="medium-txt" 
+                  style={{
+                     textDecoration: checked && "line-through",
+                     color: checked && "lightgray"
+                  }}
+               >
+                  {mainFocus}
+               </p>
+               { hovered && 
+               <div ref={clickRef} className="dots-background">
+                  <i className={checked ? "bi bi-three-dots" : "bi bi-three-dots light-txt"} />
+                  { open &&
+                  <div className="focus-box">
+                     <div className="box-element">
+                        <i className="bi bi-pencil-fill" />
+                        <p className="small-txt">Edit</p>
+                     </div>
+                     <div className="box-element">
+                        <i className="bi bi-x"></i>
+                        <p className="small-txt">Clear</p>
+                     </div>
+                  </div> }
+               </div> }
             </div>
-         }
+         </div> :
+         <div className="main-focus-form">
+            <p className="medium-txt">What's your main focus for today?</p>
+            <br />
+            <form onSubmit={handleSubmit}>
+               <input 
+                  className="medium-txt"
+                  type="text" 
+                  value={mainFocus} 
+                  onChange={event => setMainFocus(event.target.value)}
+               />
+            </form>
+         </div> }
       </div>
    )
 }

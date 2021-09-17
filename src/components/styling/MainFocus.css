@@ -1,3 +1,8 @@
+.main-focus-area {
+   width: 100%;
+   text-align: center;
+}
+
 .main-focus-form {
    width: auto;
 }
@@ -19,8 +24,48 @@
    display: flex;
    flex-direction: row;
    align-items: center;
+   justify-content: center;
+   width: 100%;
 }
 
 .focused-todo p {
-   padding: 0 1em;
+   width: 140px;
+}
+
+.focused-todo i, .focused-todo p {
+   transition: var(--quick);
+}
+
+.focused-todo i {
+   animation: fadeIn 300ms;
+   cursor: pointer;
+}
+
+.far {
+   width: 30px;
+}
+
+.dots-background {
+   width: 30px;
+   position: relative;
+}
+
+.dots-background:hover {
+   animation: fadeIn;
+   background-color: rgb(256, 256, 256, 0.3);
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.focus-box {
+   width: 70px;
+   height: 40px;
+   background-color: white;
+   color: black;
+   display: flex;
+   flex-direction: column;
 }

@@ -20,20 +20,6 @@
    margin: 0 1rem;
 }
 
-.bi-google {
+.bi-google, .search-area hr {
    animation: fadeIn 700ms;
-}
-
-.search-area hr {
-   animation: fadeIn 700ms;
-}
-
-@keyframes fadeIn {
-   from {
-      opacity: 0;
-   }
-
-   to {
-      opacity: 1;
-   }
 }

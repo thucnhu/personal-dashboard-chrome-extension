@@ -23,7 +23,11 @@
    padding-right: 1em;
 }
 
+.author a {
+   color: lightgray;
+}
+
 .bi-twitter:hover {
-   filter: brightness(3);
+   color: white;
    transition: color ease 300ms;
 }

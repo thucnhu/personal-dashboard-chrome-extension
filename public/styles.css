@@ -10,6 +10,7 @@ html {
    font-size: 17px;
    --transparent: rgb(256, 256, 256, 0.8);
    --smooth: all ease 350ms;
+   --quick: all ease 150ms
    --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
    --text-shadow: 0px 0px 20px #242424;
 }
@@ -24,7 +25,7 @@ body {
 }
 
 .light-txt {
-   opacity: 0.8;
+   color: rgb(230, 230, 230);
 }
 
 .center {
@@ -60,11 +61,6 @@ hr {
    border: 0.5px solid white;
 }
 
-a {
-   color: white;
-   text-decoration: none;
-}
-
 input {
    background: transparent;
    border: none;
@@ -75,3 +71,14 @@ input {
 input:focus {
    outline: none;
 }
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+   }
+
+   to {
+      opacity: 1;
+   }
+}
+
