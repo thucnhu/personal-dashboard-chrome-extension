@@ -22,3 +22,8 @@
 .author p {
    padding-right: 1em;
 }
+
+.bi-twitter:hover {
+   filter: brightness(3);
+   transition: color ease 300ms;
+}

@@ -1,0 +1,26 @@
+.main-focus-form {
+   width: auto;
+}
+
+.main-focus-form input {
+   border-bottom: 2px solid white;
+   width: 100%;
+   text-align: center;
+}
+
+.focused {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.focused-todo {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.focused-todo p {
+   padding: 0 1em;
+}

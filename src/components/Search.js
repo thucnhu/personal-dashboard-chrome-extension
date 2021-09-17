@@ -8,7 +8,7 @@ export default function Search() {
    return (
       <div className="search-area" ref={hoverRef}>
          <div className="search-bar">
-            <i class="bi bi-search"></i>
+            <i className="bi bi-search"></i>
             <form action="https://google.com/search" method="GET">
                <input autoComplete="off" type="text" name="q" />
             </form>

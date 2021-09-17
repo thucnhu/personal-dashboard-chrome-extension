@@ -8,7 +8,7 @@ export default function Weather() {
 
    useEffect(() => {
       navigator.geolocation.getCurrentPosition(position => {
-         fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
+         fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`)
             .then(response => {
                if (!response.ok) 
                   throw Error("Weather data not available")
@@ -16,7 +16,6 @@ export default function Weather() {
                return response.json()
             })
             .then(data => {
-               console.log(data)
                setWeatherIcon(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
                setTemp(Math.round(data.main.temp))
                setCity(data.name)

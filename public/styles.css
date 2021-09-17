@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 * {
    margin: 0;
@@ -23,6 +23,10 @@ body {
    color: black;
 }
 
+.light-txt {
+   opacity: 0.8;
+}
+
 .center {
    margin-left: auto;
    margin-right: auto;
@@ -34,6 +38,17 @@ body {
 
 .medium-txt {
    font-size: 1.7rem;
+   font-weight: 500;
+}
+
+.very-big-txt {
+   font-size: 8rem;
+   font-weight: 500;
+}
+
+.big-txt {
+   font-size: 3rem;
+   font-weight: 500;
 }
 
 br {
@@ -47,12 +62,14 @@ hr {
 
 a {
    color: white;
+   text-decoration: none;
 }
 
 input {
    background: transparent;
    border: none;
    caret-color: white;
+   color: white;
 }
 
 input:focus {

@@ -4,7 +4,7 @@ import "./styling/Todo.css"
 export default function Todo() {
    return (
       <div className="todo">
-         Todo
+         <p className="light-txt">Todo</p>
       </div>
    )
 }
