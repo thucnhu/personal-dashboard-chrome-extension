@@ -12,7 +12,7 @@ export default function Search() {
             <form action="https://google.com/search" method="GET">
                <input autoComplete="off" type="text" name="q" />
             </form>
-            {hovered && <i class="bi bi-google" />}
+            {hovered && <i className="bi bi-google" />}
          </div>
          <br />
          {hovered && <hr />}

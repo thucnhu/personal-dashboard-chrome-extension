@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
-import {Todo, Quote, Search} from "./components"
+import {Todo, Quote, Search, Weather, MainFocus} from "./components"
 import "./App.css"
 
 export default function App() {
    const [img, setImg] = useState("")
-   const [location, setLocation] = useState("")
+   const [imgLocation, setImgLocation] = useState("")
 
    useEffect(() => {
       fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=country")
@@ -13,7 +13,7 @@ export default function App() {
          .then(data => {
             setImg(data.urls.regular)
             if (data.location.city !== null && data.location.country !== null)
-               setLocation(data.location.city + ", " + data.location.country)
+               setImgLocation(data.location.city + ", " + data.location.country)
          })
    }, [])
 
@@ -21,13 +21,13 @@ export default function App() {
       <div className="app" style={{backgroundImage: `url(${img})`}}>
          <div className="top-app">
             <Search />
-            <h4>Weather</h4>
+            <Weather />
          </div>
          <br />
          <h1>Time</h1>
-         <h1>Main focus</h1>
+         <MainFocus />
          <div className="bottom-app">
-            <p className="small-txt location">{location}</p>
+            <p className="small-txt location">{imgLocation}</p>
             <Quote />
             <Todo />
          </div>

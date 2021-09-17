@@ -32,6 +32,10 @@ body {
    font-size: 0.8rem;
 }
 
+.medium-txt {
+   font-size: 1.7rem;
+}
+
 br {
    line-height: 0.6rem;
 }
