@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import {Todo, Quote} from "./components"
+import {Todo, Quote, Search} from "./components"
 import "./App.css"
 
 export default function App() {
@@ -19,7 +19,10 @@ export default function App() {
 
    return (
       <div className="app" style={{backgroundImage: `url(${img})`}}>
-         <h4>Weather</h4>
+         <div className="top-app">
+            <Search />
+            <h4>Weather</h4>
+         </div>
          <br />
          <h1>Time</h1>
          <h1>Main focus</h1>

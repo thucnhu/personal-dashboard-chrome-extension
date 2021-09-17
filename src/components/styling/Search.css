@@ -1,0 +1,29 @@
+/* .search-area {
+   position: relative;
+   height: fit-content;
+   top: 0;
+} */
+
+.search-bar {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   cursor: pointer;
+   transition: var(--smooth);
+}
+
+.search-bar input {
+   margin: 0 1rem;
+   color: white;
+   text-shadow: var(--text-shadow);
+}
+
+.light {
+   color: rgb(256, 256, 256, 0.7);
+   
+}
+
+.hr-light {
+   background-color: rgb(256, 256, 256, 0.7);
+   border: 1px solid rgb(256, 256, 256, 0.7);
+}

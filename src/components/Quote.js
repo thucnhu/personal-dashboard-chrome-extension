@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import "./Quote.css"
+import "./styling/Quote.css"
 import useHover from "../hooks/useHover"
 
 export default function Quote() {

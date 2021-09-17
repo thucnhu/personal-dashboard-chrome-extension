@@ -19,7 +19,7 @@ body {
    text-shadow: var(--text-shadow);
 }
 
-.black-text {
+.black-txt {
    color: black;
 }
 
@@ -36,20 +36,25 @@ body {
    font-size: 0.8rem;
 }
 
-.pop-up {
-   position: fixed;
-   width: 100%;
-   height: 100%;
-}
-
-.transition {
-   transition: var(--smooth);
-}
-
 br {
    line-height: 0.6rem;
 }
 
+hr {
+   background-color: white;
+   border: 0.5px solid white;
+}
+
 a {
    color: white;
+}
+
+input {
+   background: transparent;
+   border: none;
+   caret-color: white;
+}
+
+input:focus {
+   outline: none;
 }

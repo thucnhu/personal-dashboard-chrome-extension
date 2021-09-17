@@ -10,6 +10,14 @@
    padding: 1.4rem;
 }
 
+.top-app {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   height: 7%;
+}
+
 .bottom-app {
    display: flex;
    flex-direction: row;
