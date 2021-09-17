@@ -10,12 +10,12 @@ export default function Search() {
          <div className="search-bar">
             <i class="bi bi-search"></i>
             <form action="https://google.com/search" method="GET">
-               <input type="text" name="q" />
+               <input autoComplete="off" type="text" name="q" />
             </form>
-            {hovered && <i class="light bi bi-google"></i>}
+            {hovered && <i class="bi bi-google" />}
          </div>
          <br />
-         {hovered && <hr className="hr-light" />}
+         {hovered && <hr />}
       </div>
    )
 }
