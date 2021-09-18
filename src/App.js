@@ -40,7 +40,7 @@ export default function App() {
 
 
    return (
-      <div className="app" style={{backgroundImage: `url(${img})`}}>
+      <div id="app" style={{backgroundImage: `url(${img})`}}>
          <div className="top-app">
             <Search />
             <Weather />

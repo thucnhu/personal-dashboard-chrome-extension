@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import "./styling/Weather.css"
 
+
 export default function Weather() {
    const [weatherIcon, setWeatherIcon] = useState("")
    const [temp, setTemp] = useState()
    const [city, setCity] = useState("")
+
 
    useEffect(() => {
       navigator.geolocation.getCurrentPosition(position => {
@@ -24,6 +26,7 @@ export default function Weather() {
       })
    }, [])
 
+   
    return (
       <div className="weather-area">
          <div className="icon-temp">

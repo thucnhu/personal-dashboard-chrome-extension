@@ -4,13 +4,15 @@
 }
 
 .main-focus-form {
-   width: auto;
+   width: fit-content;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .main-focus-form input {
    border-bottom: 2px solid white;
-   width: 100%;
    text-align: center;
+   width: 100%;
 }
 
 .focused {
@@ -18,6 +20,7 @@
    flex-direction: column;
    align-items: center;
    justify-content: space-between;
+   position: relative;
 }
 
 .focused-todo {
@@ -25,11 +28,14 @@
    flex-direction: row;
    align-items: center;
    justify-content: center;
-   width: 100%;
+   width: 240px;
+   position: relative;
+   height: 36px;
+   overflow: auto;
 }
 
 .focused-todo p {
-   width: 140px;
+   width: 130px;
 }
 
 .focused-todo i, .focused-todo p {
@@ -37,7 +43,7 @@
 }
 
 .focused-todo i {
-   animation: fadeIn 300ms;
+   animation: fadeIn 200ms;
    cursor: pointer;
 }
 
@@ -51,8 +57,8 @@
 }
 
 .dots-background:hover {
-   animation: fadeIn;
    background-color: rgb(256, 256, 256, 0.3);
+   animation: fadeIn 200ms;
    width: 30px;
    height: 30px;
    border-radius: 50%;
@@ -61,11 +67,37 @@
    align-items: center;
 }
 
+/* styling for focus-box */
+
 .focus-box {
-   width: 70px;
-   height: 40px;
+   position: absolute;
+   z-index: 20;
+   width: fit-content;
+   height: auto;
+   padding: 0.4em 0;
+   border-radius: 4px;
    background-color: white;
    color: black;
    display: flex;
    flex-direction: column;
+}
+
+.box-element {
+   display: flex;
+   flex-direction: row;
+   text-align: left;
+   padding-left: 1em;
+   padding-right: 1em;
+   padding-top: 0.4em;
+   padding-bottom: 0.4em;
+}
+
+.box-element:hover {
+   background-color: rgb(238, 238, 238);
+}  
+
+.box-element i {
+   color: grey;
+   margin-right: 1em;
+   font-size: 0.8em;
 }

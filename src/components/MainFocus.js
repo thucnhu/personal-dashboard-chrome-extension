@@ -1,20 +1,37 @@
 import React, { useEffect, useState } from 'react'
+import { usePopper } from 'react-popper'
+
 import "./styling/MainFocus.css"
 import useHover from "../hooks/useHover"
-import useClick from "../hooks/useClick"
+import useClickOutside from "../hooks/useClickOutside"
+import mergeRefs from '../mergeRefs'
+import Box from "../portal/Box"
+import Portal from "../portal/Portal"
+
 
 export default function MainFocus() {
    const [mainFocus, setMainFocus] = useState("")
    const [focused, setFocused] = useState(false)
    const [checked, setChecked] = useState(false)
+   const [open, setOpen] = useState(false)
 
    const [hovered, hoverRef] = useHover()
-   const [open, clickRef] = useClick()
+   const clickRef = useClickOutside(() => setOpen(false))
+
+   const [referenceElement, setReferenceElement] = useState(null)
+   const [popperElement, setPopperElement] = useState(null)
+   const {styles, attributes} = usePopper(
+      referenceElement, 
+      popperElement, 
+      {placement: "bottom-start"}
+   )
+
 
    function handleSubmit(event) {
       event.preventDefault()
       setFocused(true)
    }
+
 
    useEffect(() => {
       const currMainFocus = localStorage.getItem("main-focus")
@@ -26,10 +43,12 @@ export default function MainFocus() {
       }
    }, [])
 
+
    useEffect(() => {
       localStorage.setItem("main-focus", JSON.stringify(mainFocus))
       localStorage.setItem("focused", JSON.stringify(focused))
    })
+
 
    return (
       <div className="main-focus-area" ref={hoverRef}>
@@ -38,13 +57,9 @@ export default function MainFocus() {
             <h3>TODAY</h3>
             <br />
             <div className="focused-todo">
-               { hovered &&
+               { (hovered || open) &&
                <i 
-                  className={
-                     checked ? 
-                     "far fa-check-square fa-lg" : 
-                     "light-txt far fa-square fa-lg"
-                  }
+                  className={checked ? "far fa-check-square fa-lg" : "light-txt far fa-square fa-lg"}
                   onClick={() => setChecked(!checked)}
                /> }
                <p 
@@ -56,21 +71,37 @@ export default function MainFocus() {
                >
                   {mainFocus}
                </p>
-               { hovered && 
-               <div ref={clickRef} className="dots-background">
-                  <i className={checked ? "bi bi-three-dots" : "bi bi-three-dots light-txt"} />
-                  { open &&
-                  <div className="focus-box">
-                     <div className="box-element">
-                        <i className="bi bi-pencil-fill" />
-                        <p className="small-txt">Edit</p>
-                     </div>
-                     <div className="box-element">
-                        <i className="bi bi-x"></i>
-                        <p className="small-txt">Clear</p>
-                     </div>
+               <div ref={clickRef}>
+                  { (hovered || open) &&
+                  <div 
+                     className="dots-background" 
+                     onClick={() => setOpen(prevOpen => !prevOpen)}
+                     ref={setReferenceElement}
+                  >
+                     <i 
+                        className={checked ? "bi bi-three-dots" : "bi bi-three-dots light-txt"} 
+                        pop-up={document.getElementById("focus-box")}
+                     />
                   </div> }
-               </div> }
+                  <Portal>
+                     { open &&
+                     <div 
+                        className="focus-box" 
+                        ref={setPopperElement} 
+                        style={styles.popper}
+                        {...attributes.popper}
+                     >
+                        <div className="box-element">
+                           <i className="bi bi-pencil-fill" />
+                           <p className="small-txt">Edit</p>
+                        </div>
+                        <div className="box-element">
+                           <i className="bi bi-x-lg"></i>
+                           <p className="small-txt">Clear</p>
+                        </div>
+                     </div> }
+                  </Portal>
+               </div>
             </div>
          </div> :
          <div className="main-focus-form">

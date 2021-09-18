@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 export default function useHover() {
    const [hovered, setHovered] = useState(false)
-   const hoverRef = useRef(null)
+   const hoverRef = useRef()
 
    function enter() {
       setHovered(true)

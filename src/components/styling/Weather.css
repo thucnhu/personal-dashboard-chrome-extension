@@ -11,3 +11,7 @@
    align-items: center;
    height: 3rem;
 }
+
+.icon-temp img {
+   height: 3.5rem;
+}
