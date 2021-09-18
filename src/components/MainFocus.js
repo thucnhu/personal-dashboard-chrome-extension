@@ -4,8 +4,6 @@ import { usePopper } from 'react-popper'
 import "./styling/MainFocus.css"
 import useHover from "../hooks/useHover"
 import useClickOutside from "../hooks/useClickOutside"
-import mergeRefs from '../mergeRefs'
-import Box from "../portal/Box"
 import Portal from "../portal/Portal"
 
 
