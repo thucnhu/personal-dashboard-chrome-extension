@@ -6,7 +6,21 @@ import "./App.css"
 export default function App() {
    const [img, setImg] = useState("")
    const [imgLocation, setImgLocation] = useState("")
+   let intervalId
 
+   /** Get a new image every 6 hours */
+   useEffect(() => {
+      intervalId = setInterval(() => {
+         fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=country")
+            .then(response => response.json())
+            .then(data => {
+               setImg(data.urls.full)
+               if (data.location.city !== null && data.location.country !== null)
+                  setImgLocation(data.location.city + ", " + data.location.country)
+         })
+      }, 1000 * 60 * 60 * 6)
+   }, [])
+  
 
    /** Retrieve data in the storage and set it to the current states */
    useEffect(() => {
@@ -17,18 +31,6 @@ export default function App() {
          setImg(JSON.parse(currImg))
          setImgLocation(JSON.parse(currImgLocation))
       }
-   }, [])
-
-
-   /** Change image on page refresh */
-   useEffect(() => {
-      fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=country")
-         .then(response => response.json())
-         .then(data => {
-            setImg(data.urls.regular)
-            if (data.location.city !== null && data.location.country !== null)
-               setImgLocation(data.location.city + ", " + data.location.country)
-         })
    }, [])
 
 
