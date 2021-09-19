@@ -1,0 +1,11 @@
+.todo-item {
+   color: black;
+}
+
+.todo-item p:hover {
+   color: black;
+}
+
+.todo-item i {
+   cursor: pointer;
+}

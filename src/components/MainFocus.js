@@ -42,8 +42,9 @@ export default function MainFocus() {
       setFocused(false)
       setOpen(false)
    }
+   
 
-
+   /** Retrieve data from the last time */
    useEffect(() => {
       const currMainFocus = localStorage.getItem("main-focus")
       const currFocused = localStorage.getItem("focused")
@@ -54,7 +55,7 @@ export default function MainFocus() {
       }
    }, [])
 
-
+   /** Store current data into storage */
    useEffect(() => {
       localStorage.setItem("main-focus", JSON.stringify(mainFocus))
       localStorage.setItem("focused", JSON.stringify(focused))

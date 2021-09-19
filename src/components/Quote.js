@@ -8,11 +8,13 @@ export default function Quote() {
    const [hovered, hoverRef] = useHover()
 
    useEffect(() => {
-      fetch("https://quote-garden.herokuapp.com/api/v3/quotes/random")
+      fetch("https://type.fit/api/quotes")
          .then(response => response.json())
          .then(data => {
-            setQuote(data.data[0].quoteText)
-            setAuthor(data.data[0].quoteAuthor)
+            // get random quote from the array
+            const randNum = Math.floor(Math.random() * data.length)
+            setQuote(data[randNum].text)
+            setAuthor(data[randNum].author)
          })
    }, [])
 
