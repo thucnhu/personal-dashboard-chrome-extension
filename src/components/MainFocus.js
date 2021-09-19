@@ -33,6 +33,7 @@ export default function MainFocus() {
 
    function handleClear() {
       setFocused(false)
+      setChecked(false)
       setMainFocus("")
       setOpen(false)
    }

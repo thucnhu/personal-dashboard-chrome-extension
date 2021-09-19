@@ -1,11 +1,36 @@
 .todo-item {
    color: black;
+   position: relative;
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   height: 1.9rem;
+   width: 100%;
 }
 
-.todo-item p:hover {
-   color: black;
+.todo-item i, .todo-item input[type=checkbox] {
+   cursor: pointer;
+   width: fit-content;
+   position: absolute;
+}
+
+.todo-item form, .todo-item p {
+   width: 100%;
+   padding: 0 1.3rem;
+}
+
+.todo-item input[type=text] {
+   color: darkgray;
+}
+
+.todo-text, .todo-item input[type=text] {
+   font-size: 0.9rem;
+}
+
+.todo-item p {
+   overflow: visible;
 }
 
 .todo-item i {
-   cursor: pointer;
+   right: 0;
 }

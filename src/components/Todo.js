@@ -20,8 +20,9 @@ export default function Todo() {
 
 
    function handleDelete(id) {
-      const newList = [...todoList].filter(item => item.id !== id)
-      setTodoList(newList)
+      if (todoList.length === 1)
+         setTodoList([])
+      else setTodoList(prevList => prevList.filter(item => item.id !== id))
    }
 
 
@@ -64,14 +65,17 @@ export default function Todo() {
             style={styles.popper} 
             {...attributes.popper}
          >
-            { todoList.map((item, index) => (
-               <TodoItem 
-                  key={index}
-                  id={item.id} 
-                  text={item.text} 
-                  handleDelete={handleDelete} 
-               />
-            )) }
+            <p>{todoList.length ? "Your todo list" : "No todos for now"}</p>
+            <div className="all-todos">
+               { todoList.map((item, index) => (
+                  <TodoItem 
+                     key={index}
+                     id={item.id} 
+                     text={item.text} 
+                     handleDelete={handleDelete} 
+                  />
+               )) }
+            </div>
             <form className="todo-form" onSubmit={handleSubmit}>
                <input 
                   type="text" 
@@ -83,8 +87,8 @@ export default function Todo() {
          </div> }
 
          <p
-            className="light-txt" 
-            onClick={() => setOpen(prevOpen => !prevOpen)}
+            className="light-txt menu" 
+            onClick={() => setOpen(!open)}
             ref={setReferenceElement}
          >
             Todo
