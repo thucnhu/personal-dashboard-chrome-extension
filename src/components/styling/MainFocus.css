@@ -1,12 +1,14 @@
 .main-focus-area {
-   width: 100%;
+   width: fit-content;
    text-align: center;
+   height: 80px;
 }
 
 .main-focus-form {
    width: fit-content;
    margin-left: auto;
    margin-right: auto;
+   animation: fadeIn 1000ms;
 }
 
 .main-focus-form input {
@@ -21,6 +23,7 @@
    align-items: center;
    justify-content: space-between;
    position: relative;
+   animation: fadeIn 1000ms;
 }
 
 .focused-todo {
@@ -31,7 +34,6 @@
    width: 240px;
    position: relative;
    height: 36px;
-   overflow: auto;
 }
 
 .focused-todo p {
@@ -72,7 +74,6 @@
 .focus-box {
    position: absolute;
    z-index: 20;
-   width: fit-content;
    height: auto;
    padding: 0.4em 0;
    border-radius: 4px;

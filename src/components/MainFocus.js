@@ -4,7 +4,7 @@ import { usePopper } from 'react-popper'
 import "./styling/MainFocus.css"
 import useHover from "../hooks/useHover"
 import useClickOutside from "../hooks/useClickOutside"
-import Portal from "../portal/Portal"
+import mergeRefs from "../mergeRefs"
 
 
 export default function MainFocus() {
@@ -31,6 +31,19 @@ export default function MainFocus() {
    }
 
 
+   function handleClear() {
+      setFocused(false)
+      setMainFocus("")
+      setOpen(false)
+   }
+
+
+   function handleEdit() {
+      setFocused(false)
+      setOpen(false)
+   }
+
+
    useEffect(() => {
       const currMainFocus = localStorage.getItem("main-focus")
       const currFocused = localStorage.getItem("focused")
@@ -49,18 +62,18 @@ export default function MainFocus() {
 
 
    return (
-      <div className="main-focus-area" ref={hoverRef}>
+      <div className="main-focus-area" ref={mergeRefs(hoverRef, clickRef)}>
          { focused ?
          <div className="focused">
             <h3>TODAY</h3>
             <br />
             <div className="focused-todo">
                { (hovered || open) &&
-               <i 
+               <i // check box
                   className={checked ? "far fa-check-square fa-lg" : "light-txt far fa-square fa-lg"}
                   onClick={() => setChecked(!checked)}
                /> }
-               <p 
+               <p // main focus
                   className="medium-txt" 
                   style={{
                      textDecoration: checked && "line-through",
@@ -69,8 +82,8 @@ export default function MainFocus() {
                >
                   {mainFocus}
                </p>
-               <div ref={clickRef}>
-                  { (hovered || open) &&
+               <div>
+                  { (hovered || open) && // drop-down menu
                   <div 
                      className="dots-background" 
                      onClick={() => setOpen(prevOpen => !prevOpen)}
@@ -81,24 +94,22 @@ export default function MainFocus() {
                         pop-up={document.getElementById("focus-box")}
                      />
                   </div> }
-                  <Portal>
-                     { open &&
-                     <div 
-                        className="focus-box" 
-                        ref={setPopperElement} 
-                        style={styles.popper}
-                        {...attributes.popper}
-                     >
-                        <div className="box-element">
-                           <i className="bi bi-pencil-fill" />
-                           <p className="small-txt">Edit</p>
-                        </div>
-                        <div className="box-element">
-                           <i className="bi bi-x-lg"></i>
-                           <p className="small-txt">Clear</p>
-                        </div>
-                     </div> }
-                  </Portal>
+                  { open &&
+                  <div 
+                     className="focus-box" 
+                     ref={setPopperElement} 
+                     style={styles.popper}
+                     {...attributes.popper}
+                  >
+                     <div className="box-element" onClick={handleEdit}>
+                        <i className="bi bi-pencil-fill" />
+                        <p className="small-txt">Edit</p>
+                     </div>
+                     <div className="box-element" onClick={handleClear}>
+                        <i className="bi bi-x-lg"></i>
+                        <p className="small-txt">Clear</p>
+                     </div>
+                  </div> }
                </div>
             </div>
          </div> :
